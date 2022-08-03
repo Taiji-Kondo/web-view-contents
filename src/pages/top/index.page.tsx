@@ -8,10 +8,17 @@ const TopPage: NextPage = () => {
   const [data, setData] = useState('');
   const [isOpen, { toggle }] = useDisclosure(false);
 
+  const onClick = () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    window.ReactNativeWebView.postMessage('JoinInvitedFamily');
+  };
+
   return (
     <>
       <Center style={{ flexDirection: 'column', height: '100vh' }}>
         <Button onClick={toggle}>{isOpen ? '閉じる' : 'QRコードを読み込む'}</Button>
+        <Button onClick={onClick}>遷移</Button>
         {isOpen && (
           <Box mt={10} style={{ width: 300 }}>
             <QrReader
